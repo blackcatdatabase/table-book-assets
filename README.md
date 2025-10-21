@@ -84,8 +84,8 @@ erDiagram
     BIGINT key_id
     DATETIME(6) created_at
   }
-  BOOK_ASSETS }o--|| BOOKS : (book_id)
-  BOOK_ASSETS }o--|| CRYPTO_KEYS : (key_id)
+  BOOK_ASSETS }o--|| BOOKS : "book_id"
+  BOOK_ASSETS }o--|| CRYPTO_KEYS : "key_id"
 ```
 
 ## Indexes
