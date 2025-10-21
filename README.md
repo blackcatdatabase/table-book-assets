@@ -2,7 +2,7 @@
 
 ![SQL](https://img.shields.io/badge/SQL-MySQL%208.0%2B-4479A1?logo=mysql&logoColor=white) ![License](https://img.shields.io/badge/license-BlackCat%20Proprietary-red) ![Status](https://img.shields.io/badge/status-stable-informational) ![Generated](https://img.shields.io/badge/generated-from%20schema--map-blue)
 
-> Schema package for table **book_assets** (repo: $slug).
+> Schema package for table **book_assets** (repo: `book-assets`).
 
 ## Files
 ```
@@ -39,7 +39,7 @@ mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/030_foreign_keys.sql
 |-------:|:-----|:----:|:--------|:------|
 | id | BIGINT UNSIGNED | — | — | AUTO_INCREMENT, PK |
 | book_id | BIGINT UNSIGNED | NO | — |  |
-| asset_type | ENUM(''cover'',''pdf'',''epub'',''mobi'',''sample'',''extra'') | NO | — |  |
+| asset_type | ENUM('cover','pdf','epub','mobi','sample','extra') | NO | — |  |
 | filename | VARCHAR(255) | NO | — |  |
 | mime_type | VARCHAR(100) | NO | — |  |
 | size_bytes | BIGINT | NO | — |  |
@@ -64,25 +64,25 @@ mysql -h 127.0.0.1 -P 3307 -u root -proot app < schema/030_foreign_keys.sql
 ```mermaid
 erDiagram
   BOOK_ASSETS {
-    BIGINT id PK
-    BIGINT book_id
-    ENUM(''cover'',''pdf'',''epub'',''mobi'',''sample'',''extra'') asset_type
-    VARCHAR(255) filename
-    VARCHAR(100) mime_type
-    BIGINT size_bytes
-    TEXT storage_path
-    VARCHAR(64) content_hash
-    VARCHAR(255) download_filename
+    INT id PK
+    INT book_id
+    ENUM asset_type
+    VARCHAR filename
+    VARCHAR mime_type
+    INT size_bytes
+    VARCHAR storage_path
+    VARCHAR content_hash
+    VARCHAR download_filename
     BOOLEAN is_encrypted
-    VARCHAR(50) encryption_algo
+    VARCHAR encryption_algo
     BLOB encryption_key_enc
-    VARBINARY(32) encryption_iv
-    VARBINARY(32) encryption_tag
-    VARBINARY(255) encryption_aad
+    BLOB encryption_iv
+    BLOB encryption_tag
+    BLOB encryption_aad
     JSON encryption_meta
-    VARCHAR(64) key_version
-    BIGINT key_id
-    DATETIME(6) created_at
+    VARCHAR key_version
+    INT key_id
+    DATETIME created_at
   }
   BOOK_ASSETS }o--|| BOOKS : "book_id"
   BOOK_ASSETS }o--|| CRYPTO_KEYS : "key_id"
