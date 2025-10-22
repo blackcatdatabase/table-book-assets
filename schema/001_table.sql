@@ -3,7 +3,7 @@
 CREATE TABLE IF NOT EXISTS book_assets (
   id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
   book_id BIGINT UNSIGNED NOT NULL,
-  asset_type ENUM(''cover'',''pdf'',''epub'',''mobi'',''sample'',''extra'') NOT NULL,
+  asset_type ENUM('cover','pdf','epub','mobi','sample','extra') NOT NULL,
   filename VARCHAR(255) NOT NULL,
   mime_type VARCHAR(100) NOT NULL,
   size_bytes BIGINT NOT NULL,
