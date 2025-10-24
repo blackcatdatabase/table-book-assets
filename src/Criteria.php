@@ -6,7 +6,7 @@ namespace BlackCat\Database\Packages\BookAssets;
 /**
  * Bezpečný builder WHERE/ORDER/LIMIT.
  * - whitelist filtrů: [ 'id', 'book_id', 'asset_type', 'filename', 'mime_type', 'size_bytes', 'storage_path', 'content_hash', 'download_filename', 'is_encrypted', 'encryption_algo', 'encryption_key_enc', 'encryption_iv', 'encryption_tag', 'encryption_aad', 'encryption_meta', 'key_version', 'key_id', 'created_at' ]
- * - whitelist pro LIKE hledání: [ 'filename', 'mime_type', 'storage_path', 'content_hash', 'download_filename', 'encryption_algo', 'key_version' ]
+ * - whitelist pro LIKE hledání: [ 'asset_type', 'filename', 'mime_type', 'storage_path', 'content_hash', 'download_filename', 'encryption_algo', 'key_version' ]
  */
 final class Criteria {
     /** @var array<string,mixed> */
@@ -61,7 +61,7 @@ final class Criteria {
 
         // fulltext/LIKE (přes whitelist)
         if ($this->search !== null) {
-            $searchCols = [ 'filename', 'mime_type', 'storage_path', 'content_hash', 'download_filename', 'encryption_algo', 'key_version' ];
+            $searchCols = [ 'asset_type', 'filename', 'mime_type', 'storage_path', 'content_hash', 'download_filename', 'encryption_algo', 'key_version' ];
             $likeParts = [];
             foreach ($searchCols as $i=>$c) {
                 if ($c === '') continue;

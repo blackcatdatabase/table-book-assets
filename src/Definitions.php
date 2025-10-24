@@ -6,7 +6,7 @@ namespace BlackCat\Database\Packages\BookAssets;
 final class Definitions {
     // --- základní metadata ---
     public static function table(): string { return 'book_assets'; }
-    public static function contractView(): string { return 'v_book_assets_contract'; }
+    public static function contractView(): string { return 'vw_book_assets'; }
     /** @return string[] */
     public static function columns(): array { return [ 'id', 'book_id', 'asset_type', 'filename', 'mime_type', 'size_bytes', 'storage_path', 'content_hash', 'download_filename', 'is_encrypted', 'encryption_algo', 'encryption_key_enc', 'encryption_iv', 'encryption_tag', 'encryption_aad', 'encryption_meta', 'key_version', 'key_id', 'created_at' ]; }
     public static function pk(): string { return 'id'; }
