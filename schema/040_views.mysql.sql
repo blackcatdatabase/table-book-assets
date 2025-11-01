@@ -1,9 +1,9 @@
--- Auto-generated from schema-views-mysql.psd1 (map@38d5403)
+-- Auto-generated from schema-views-mysql.psd1 (map@c5e4097)
 -- engine: mysql
 -- table:  book_assets
 -- Contract view for [book_assets]
 -- Hides encryption_key_enc, encryption_iv, encryption_tag, encryption_aad.
-CREATE OR REPLACE SQL SECURITY INVOKER VIEW vw_book_assets AS
+CREATE OR REPLACE ALGORITHM=MERGE SQL SECURITY INVOKER VIEW vw_book_assets AS
 SELECT
   id,
   book_id,
@@ -19,5 +19,9 @@ SELECT
   encryption_meta,
   key_version,
   key_id,
-  created_at
+  created_at,
+  CAST(LPAD(HEX(encryption_key_enc), 64, '0') AS CHAR(64)) AS encryption_key_enc_hex,
+  CAST(LPAD(HEX(encryption_iv),      32, '0') AS CHAR(32)) AS encryption_iv_hex,
+  CAST(LPAD(HEX(encryption_tag),     32, '0') AS CHAR(32)) AS encryption_tag_hex,
+  CAST(LPAD(HEX(encryption_aad),     64, '0') AS CHAR(64)) AS encryption_aad_hex
 FROM book_assets;
