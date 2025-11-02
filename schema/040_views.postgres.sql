@@ -1,4 +1,4 @@
--- Auto-generated from schema-views-postgres.psd1 (map@c5e4097)
+-- Auto-generated from schema-views-postgres.psd1 (map@db2f8b8)
 -- engine: postgres
 -- table:  book_assets
 -- Contract view for [book_assets]
@@ -20,8 +20,8 @@ SELECT
   key_version,
   key_id,
   created_at,
-  encode(encryption_key_enc, 'hex') AS encryption_key_enc_hex,
-  encode(encryption_iv,  'hex')     AS encryption_iv_hex,
-  encode(encryption_tag, 'hex')     AS encryption_tag_hex,
-  encode(encryption_aad, 'hex')     AS encryption_aad_hex
+  UPPER(encode(encryption_key_enc,'hex'))::char(64)   AS encryption_key_enc_hex,
+  UPPER(encode(encryption_iv,'hex'))::char(64)        AS encryption_iv_hex,
+  UPPER(encode(encryption_tag,'hex'))::char(64)       AS encryption_tag_hex,
+  UPPER(encode(encryption_aad,'hex'))::char(64)       AS encryption_aad_hex
 FROM book_assets;
