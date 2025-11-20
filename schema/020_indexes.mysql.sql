@@ -1,4 +1,8 @@
--- Auto-generated from schema-map-mysql.psd1 (map@db2f8b8)
+-- Auto-generated from schema-map-mysql.psd1 (map@734a489)
 -- engine: mysql
 -- table:  book_assets
-CREATE UNIQUE INDEX ux_book_assets_unique ON book_assets (book_id, asset_type);
+CREATE INDEX idx_book_assets_tenant ON book_assets (tenant_id);
+
+CREATE UNIQUE INDEX ux_book_assets_tenant_unique ON book_assets (tenant_id, book_id, asset_type);
+
+CREATE UNIQUE INDEX ux_book_assets_tenant_id ON book_assets (tenant_id, id);
