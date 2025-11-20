@@ -1,4 +1,4 @@
--- Auto-generated from schema-views-postgres.psd1 (map@9d3471b)
+-- Auto-generated from schema-views-postgres.psd1 (map@62c9c93)
 -- engine: postgres
 -- table:  book_assets
 -- Contract view for [book_assets]
@@ -31,7 +31,7 @@ SELECT
   UPPER(encode(encryption_aad,'hex'))       AS encryption_aad_hex
 FROM book_assets;
 
--- Auto-generated from schema-views-postgres.psd1 (map@9d3471b)
+-- Auto-generated from schema-views-postgres.psd1 (map@62c9c93)
 -- engine: postgres
 -- table:  book_assets_encryption_coverage
 -- Encryption coverage per asset_type

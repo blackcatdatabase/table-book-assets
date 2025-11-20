@@ -1,4 +1,4 @@
--- Auto-generated from schema-views-mysql.psd1 (map@db2f8b8)
+-- Auto-generated from schema-views-mysql.psd1 (map@62c9c93)
 -- engine: mysql
 -- table:  book_assets
 -- Contract view for [book_assets]
@@ -31,7 +31,7 @@ SELECT
   CAST(LPAD(HEX(encryption_aad),     64, '0') AS CHAR(64)) AS encryption_aad_hex
 FROM book_assets;
 
--- Auto-generated from schema-views-mysql.psd1 (map@db2f8b8)
+-- Auto-generated from schema-views-mysql.psd1 (map@62c9c93)
 -- engine: mysql
 -- table:  book_assets_encryption_coverage
 -- Encryption coverage per asset_type
