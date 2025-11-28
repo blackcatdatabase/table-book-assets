@@ -1,6 +1,7 @@
--- Auto-generated from schema-map-postgres.psd1 (map@62c9c93)
+-- Auto-generated from schema-map-postgres.psd1 (map@mtime:2025-11-21T00:25:46Z)
 -- engine: postgres
 -- table:  book_assets
+
 CREATE INDEX IF NOT EXISTS idx_book_assets_book ON book_assets (book_id);
 
 CREATE INDEX IF NOT EXISTS idx_book_assets_type ON book_assets (asset_type);
