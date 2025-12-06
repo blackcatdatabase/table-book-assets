@@ -17,7 +17,7 @@ use BlackCat\Database\Support\DtoHydrator;
 final class BookAssetDtoMapper
 {
     /** @var array<string,string> Column -> DTO property */
-    private const COL_TO_PROP = [ 'tenant_id' => 'tenantId', 'book_id' => 'bookId', 'asset_type' => 'assetType', 'mime_type' => 'mimeType', 'size_bytes' => 'sizeBytes', 'storage_path' => 'storagePath', 'content_hash' => 'contentHash', 'download_filename' => 'downloadFilename', 'is_encrypted' => 'isEncrypted', 'encryption_algo' => 'encryptionAlgo', 'encryption_key_enc' => 'encryptionKeyEnc', 'encryption_iv' => 'encryptionIv', 'encryption_tag' => 'encryptionTag', 'encryption_aad' => 'encryptionAad', 'encryption_meta' => 'encryptionMeta', 'key_version' => 'keyVersion', 'key_id' => 'keyId', 'created_at' => 'createdAt' ];
+    private const COL_TO_PROP = [ 'id' => 'id', 'tenant_id' => 'tenantId', 'book_id' => 'bookId', 'asset_type' => 'assetType', 'filename' => 'filename', 'mime_type' => 'mimeType', 'size_bytes' => 'sizeBytes', 'storage_path' => 'storagePath', 'content_hash' => 'contentHash', 'download_filename' => 'downloadFilename', 'is_encrypted' => 'isEncrypted', 'encryption_algo' => 'encryptionAlgo', 'encryption_key_enc' => 'encryptionKeyEnc', 'encryption_iv' => 'encryptionIv', 'encryption_tag' => 'encryptionTag', 'encryption_aad' => 'encryptionAad', 'encryption_meta' => 'encryptionMeta', 'key_version' => 'keyVersion', 'key_id' => 'keyId', 'created_at' => 'createdAt' ];
 
     /** @var string[] */
     private const BOOL_COLS   = [ 'is_encrypted' ];
@@ -39,13 +39,8 @@ final class BookAssetDtoMapper
 
     private static function tz(): DateTimeZone
     {
-        if (self::$tzObj instanceof DateTimeZone) {
-            return self::$tzObj;
-        }
-        try {
+        if (!(self::$tzObj instanceof DateTimeZone)) {
             self::$tzObj = new DateTimeZone(self::TZ);
-        } catch (\Throwable) {
-            self::$tzObj = new DateTimeZone('UTC');
         }
         return self::$tzObj;
     }
