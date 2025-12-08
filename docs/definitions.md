@@ -5,20 +5,20 @@ Binary and ancillary assets for books (covers, files, extras). UNIQUE (book_id, 
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| asset_type | TEXT | NO |  | Kind of asset. (enum: cover, pdf, epub, mobi, sample, extra) |
+| asset_type | ENUM('cover','pdf','epub','mobi','sample','extra') | NO |  | Kind of asset. (enum: cover, pdf, epub, mobi, sample, extra) |
 | book_id | BIGINT | NO |  | Book (FK books.id). |
 | content_hash | VARCHAR(64) | YES |  | Optional file content hash (hex). |
-| created_at | TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
+| created_at | DATETIME(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 | download_filename | VARCHAR(255) | YES |  | Suggested download file name. |
-| encryption_aad | BYTEA | YES |  | Associated data for AEAD ciphers. |
+| encryption_aad | VARBINARY(255) | YES |  | Associated data for AEAD ciphers. |
 | encryption_algo | VARCHAR(50) | YES |  | Algorithm identifier (e.g., AES-256-GCM). |
-| encryption_iv |  | YES |  | IV/nonce used for encryption. |
-| encryption_key_enc | BYTEA | YES |  | Wrapped DEK or encrypted key blob. |
-| encryption_meta | JSONB | YES |  | JSON metadata about encryption layers. |
-| encryption_tag | BYTEA | YES |  | Auth tag for AEAD ciphers. |
+| encryption_iv | VARBINARY(32) | YES |  | IV/nonce used for encryption. |
+| encryption_key_enc | BLOB | YES |  | Wrapped DEK or encrypted key blob. |
+| encryption_meta | JSON | YES |  | JSON metadata about encryption layers. |
+| encryption_tag | VARBINARY(32) | YES |  | Auth tag for AEAD ciphers. |
 | filename | VARCHAR(255) | NO |  | Original file name. |
 | id | BIGINT | NO |  | Surrogate primary key. |
-| is_encrypted | BOOLEAN | NO | FALSE | Whether asset is encrypted at rest. |
+| is_encrypted | BOOLEAN | NO | 0 | Whether asset is encrypted at rest. |
 | key_id | BIGINT | YES |  | Optional link to crypto_keys.id. |
 | key_version | VARCHAR(64) | YES |  | Local key version reference. |
 | mime_type | VARCHAR(100) | NO |  | MIME type. |
@@ -81,7 +81,7 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_book_assets | mysql | algorithm=MERGE, security=INVOKER | [packages\book-assets\schema\040_views.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/book-assets/schema/040_views.mysql.sql) |
-| vw_book_assets_encryption_coverage | mysql | algorithm=TEMPTABLE, security=INVOKER | [packages\book-assets\schema\040_views_joins.mysql.sql](https://github.com/blackcatacademy/blackcat-database/packages/book-assets/schema/040_views_joins.mysql.sql) |
-| vw_book_assets | postgres |  | [packages\book-assets\schema\040_views.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/book-assets/schema/040_views.postgres.sql) |
-| vw_book_assets_encryption_coverage | postgres |  | [packages\book-assets\schema\040_views_joins.postgres.sql](https://github.com/blackcatacademy/blackcat-database/packages/book-assets/schema/040_views_joins.postgres.sql) |
+| vw_book_assets | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
+| vw_book_assets_encryption_coverage | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
+| vw_book_assets | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
+| vw_book_assets_encryption_coverage | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
