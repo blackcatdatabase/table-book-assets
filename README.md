@@ -106,7 +106,7 @@ _No engine differences detected._
 ## Constraints Snapshot
 - `asset_type` – enum
 - `created_at` – default=CURRENT_TIMESTAMP(6)
-- `is_encrypted` – default=0
+- `is_encrypted` – default=FALSE
 
 ## Schema Files
 | File | Engine |
