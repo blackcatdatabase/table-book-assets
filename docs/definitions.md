@@ -5,25 +5,25 @@ Binary and ancillary assets for books (covers, files, extras). UNIQUE (book_id, 
 ## Columns
 | Column | Type | Null | Default | Description |
 | --- | --- | --- | --- | --- |
-| asset_type | mysql: ENUM('cover','pdf','epub','mobi','sample','extra') / postgres: TEXT | NO |  | Kind of asset. (enum: cover, pdf, epub, mobi, sample, extra) |
-| book_id | BIGINT | NO |  | Book (FK books.id). |
 | content_hash | VARCHAR(64) | YES |  | Optional file content hash (hex). |
-| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
-| download_filename | VARCHAR(255) | YES |  | Suggested download file name. |
+| mime_type | VARCHAR(100) | NO |  | MIME type. |
+| key_id | BIGINT | YES |  | Optional link to crypto_keys.id. |
 | encryption_aad | mysql: VARBINARY(255) / postgres: BYTEA | YES |  | Associated data for AEAD ciphers. |
 | encryption_algo | VARCHAR(50) | YES |  | Algorithm identifier (e.g., AES-256-GCM). |
-| encryption_iv | VARBINARY(32) | YES |  | IV/nonce used for encryption. |
-| encryption_key_enc | mysql: BLOB / postgres: BYTEA | YES |  | Wrapped DEK or encrypted key blob. |
-| encryption_meta | mysql: JSON / postgres: JSONB | YES |  | JSON metadata about encryption layers. |
-| encryption_tag | mysql: VARBINARY(32) / postgres: BYTEA | YES |  | Auth tag for AEAD ciphers. |
-| filename | VARCHAR(255) | NO |  | Original file name. |
-| id | BIGINT | NO |  | Surrogate primary key. |
 | is_encrypted | BOOLEAN | NO | mysql: 0 / postgres: FALSE | Whether asset is encrypted at rest. |
-| key_id | BIGINT | YES |  | Optional link to crypto_keys.id. |
-| key_version | VARCHAR(64) | YES |  | Local key version reference. |
-| mime_type | VARCHAR(100) | NO |  | MIME type. |
+| filename | VARCHAR(255) | NO |  | Original file name. |
 | size_bytes | BIGINT | NO |  | File size in bytes. |
+| key_version | VARCHAR(64) | YES |  | Local key version reference. |
+| encryption_meta | mysql: JSON / postgres: JSONB | YES |  | JSON metadata about encryption layers. |
+| book_id | BIGINT | NO |  | Book (FK books.id). |
 | storage_path | TEXT | YES |  | Backend storage path or URI. |
+| encryption_tag | mysql: VARBINARY(32) / postgres: BYTEA | YES |  | Auth tag for AEAD ciphers. |
+| download_filename | VARCHAR(255) | YES |  | Suggested download file name. |
+| encryption_iv | VARBINARY(32) | YES |  | IV/nonce used for encryption. |
+| id | BIGINT | NO |  | Surrogate primary key. |
+| encryption_key_enc | mysql: BLOB / postgres: BYTEA | YES |  | Wrapped DEK or encrypted key blob. |
+| asset_type | mysql: ENUM('cover','pdf','epub','mobi','sample','extra') / postgres: TEXT | NO |  | Kind of asset. (enum: cover, pdf, epub, mobi, sample, extra) |
+| created_at | mysql: DATETIME(6) / postgres: TIMESTAMPTZ(6) | NO | CURRENT_TIMESTAMP(6) | Creation timestamp (UTC). |
 
 ## Engine Details
 
