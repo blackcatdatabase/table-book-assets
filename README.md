@@ -105,8 +105,8 @@ _No engine differences detected._
 
 ## Constraints Snapshot
 - `asset_type` – enum
-- `created_at` – default=CURRENT_TIMESTAMP(6)
 - `is_encrypted` – default=mysql: 0 / postgres: FALSE
+- `created_at` – default=CURRENT_TIMESTAMP(6)
 
 ## Schema Files
 | File | Engine |
