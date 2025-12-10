@@ -104,9 +104,9 @@ graph LR
 _No engine differences detected._
 
 ## Constraints Snapshot
-- `is_encrypted` – default=mysql: 0 / postgres: FALSE
 - `asset_type` – enum
 - `created_at` – default=CURRENT_TIMESTAMP(6)
+- `is_encrypted` – default=mysql: 0 / postgres: FALSE
 
 ## Schema Files
 | File | Engine |
