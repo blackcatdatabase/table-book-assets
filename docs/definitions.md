@@ -18,7 +18,7 @@ Binary and ancillary assets for books (covers, files, extras). UNIQUE (book_id, 
 | encryption_tag | mysql: VARBINARY(32) / postgres: BYTEA | YES |  | Auth tag for AEAD ciphers. |
 | filename | VARCHAR(255) | NO |  | Original file name. |
 | id | BIGINT | NO |  | Surrogate primary key. |
-| is_encrypted | BOOLEAN | NO | FALSE | Whether asset is encrypted at rest. |
+| is_encrypted | BOOLEAN | NO | mysql: 0 / postgres: FALSE | Whether asset is encrypted at rest. |
 | key_id | BIGINT | YES |  | Optional link to crypto_keys.id. |
 | key_version | VARCHAR(64) | YES |  | Local key version reference. |
 | mime_type | VARCHAR(100) | NO |  | MIME type. |
@@ -81,7 +81,7 @@ Foreign keys:
 ## Views
 | View | Engine | Flags | File |
 | --- | --- | --- | --- |
-| vw_book_assets | mysql | algorithm=MERGE, security=INVOKER | [schema\040_views.mysql.sql](schema\040_views.mysql.sql) |
-| vw_book_assets_encryption_coverage | mysql | algorithm=TEMPTABLE, security=INVOKER | [schema\040_views_joins.mysql.sql](schema\040_views_joins.mysql.sql) |
-| vw_book_assets | postgres |  | [schema\040_views.postgres.sql](schema\040_views.postgres.sql) |
-| vw_book_assets_encryption_coverage | postgres |  | [schema\040_views_joins.postgres.sql](schema\040_views_joins.postgres.sql) |
+| vw_book_assets | mysql | algorithm=MERGE, security=INVOKER | [../schema/040_views.mysql.sql](../schema/040_views.mysql.sql) |
+| vw_book_assets_encryption_coverage | mysql | algorithm=TEMPTABLE, security=INVOKER | [../schema/040_views_joins.mysql.sql](../schema/040_views_joins.mysql.sql) |
+| vw_book_assets | postgres |  | [../schema/040_views.postgres.sql](../schema/040_views.postgres.sql) |
+| vw_book_assets_encryption_coverage | postgres |  | [../schema/040_views_joins.postgres.sql](../schema/040_views_joins.postgres.sql) |
