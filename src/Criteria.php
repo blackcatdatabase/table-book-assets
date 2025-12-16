@@ -41,11 +41,11 @@ final class Criteria extends BaseCriteria
         return [ 'filename', 'mime_type', 'storage_path', 'content_hash', 'download_filename', 'encryption_algo', 'key_version' ];
     }
 
-/** Columns allowed in ORDER BY (falls back to filterable() when empty). */
-protected function sortable(): array
-{
-    return [ 'id', 'tenant_id', 'book_id', 'asset_type', 'filename', 'mime_type', 'size_bytes', 'storage_path', 'content_hash', 'download_filename', 'is_encrypted', 'encryption_algo', 'key_version', 'key_id', 'created_at' ];
-}
+    /** Columns allowed in ORDER BY (falls back to filterable() when empty). */
+    protected function sortable(): array
+    {
+        return [ 'id', 'tenant_id', 'book_id', 'asset_type', 'filename', 'mime_type', 'size_bytes', 'storage_path', 'content_hash', 'download_filename', 'is_encrypted', 'encryption_algo', 'key_version', 'key_id', 'created_at' ];
+    }
 
     /**
      * Whitelist of joinable entities (for safe ->join() usage):
