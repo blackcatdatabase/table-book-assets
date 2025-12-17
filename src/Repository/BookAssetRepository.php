@@ -252,6 +252,7 @@ use OrderByTools, PkTools, RepositoryHelpers;
           ));
           if (!$rows) { return 0; }
 
+          /** @var list<string> $updCols */
           $updCols = [ 'filename', 'mime_type', 'size_bytes', 'storage_path', 'content_hash', 'download_filename', 'is_encrypted', 'encryption_algo', 'encryption_key_enc', 'encryption_iv', 'encryption_tag', 'encryption_aad', 'encryption_meta', 'key_version', 'key_id' ];
           if ($updCols && $soft && !in_array($soft, $updCols, true)) { $updCols[] = $soft; }
 
