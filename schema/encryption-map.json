@@ -1,0 +1,73 @@
+{
+  "tables": {
+    "book_assets": {
+      "columns": {
+        "asset_type": {
+          "strategy": "passthrough"
+        },
+        "book_id": {
+          "strategy": "passthrough"
+        },
+        "content_hash": {
+          "strategy": "passthrough"
+        },
+        "created_at": {
+          "strategy": "passthrough"
+        },
+        "download_filename": {
+          "strategy": "passthrough"
+        },
+        "encryption_aad": {
+          "strategy": "passthrough"
+        },
+        "encryption_algo": {
+          "strategy": "passthrough"
+        },
+        "encryption_iv": {
+          "strategy": "passthrough"
+        },
+        "encryption_key_enc": {
+          "context": "db.vault.book_assets.encryption_key_enc",
+          "encryption_meta_column": "encryption_meta",
+          "key_version_column": "key_version",
+          "strategy": "encrypt",
+          "write_encryption_meta": true,
+          "write_key_version": true
+        },
+        "encryption_meta": {
+          "strategy": "passthrough"
+        },
+        "encryption_tag": {
+          "strategy": "passthrough"
+        },
+        "filename": {
+          "strategy": "passthrough"
+        },
+        "id": {
+          "strategy": "passthrough"
+        },
+        "is_encrypted": {
+          "strategy": "passthrough"
+        },
+        "key_id": {
+          "strategy": "passthrough"
+        },
+        "key_version": {
+          "strategy": "passthrough"
+        },
+        "mime_type": {
+          "strategy": "passthrough"
+        },
+        "size_bytes": {
+          "strategy": "passthrough"
+        },
+        "storage_path": {
+          "strategy": "passthrough"
+        },
+        "tenant_id": {
+          "strategy": "passthrough"
+        }
+      }
+    }
+  }
+}
