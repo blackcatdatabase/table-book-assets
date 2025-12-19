@@ -119,8 +119,8 @@ SQL;
         $hasTable = SchemaIntrospector::hasTable($db, $d, $table);
         $hasView  = SchemaIntrospector::hasView($db, $d, $view);
 
-        // Quick index/FK check â€“ generator injects names (case-sensitive per DB)
-        $expectedIdx = [ 'idx_book_assets_tenant', 'ux_book_assets_tenant_id', 'ux_book_assets_tenant_unique' ];
+        // Quick index/FK check - generator injects names (case-sensitive per DB)
+        $expectedIdx = [ 'idx_book_assets_book', 'idx_book_assets_tenant', 'idx_book_assets_type', 'ux_book_assets_tenant_id', 'ux_book_assets_tenant_unique' ];
         if ($d->isMysql()) {
             // Drop PG-only index naming patterns (e.g., GIN/GiST)
             $expectedIdx = array_values(array_filter(
@@ -153,7 +153,7 @@ SQL;
             'columns'     => Definitions::columns(),
             'version'     => $this->version(),
             'dialects'    => [ 'mysql', 'postgres' ],
-            'indexes'     => [ 'idx_book_assets_tenant', 'ux_book_assets_tenant_id', 'ux_book_assets_tenant_unique' ],
+            'indexes'     => [ 'idx_book_assets_book', 'idx_book_assets_tenant', 'idx_book_assets_type', 'ux_book_assets_tenant_id', 'ux_book_assets_tenant_unique' ],
             'foreignKeys' => [ 'fk_book_assets_book', 'fk_book_assets_key', 'fk_book_assets_tenant' ],
         ];
     }
